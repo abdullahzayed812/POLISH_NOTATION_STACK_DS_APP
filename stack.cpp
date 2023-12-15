@@ -54,9 +54,11 @@ void Stack::clearStack() {
   Node* temp = this->top;
 
   while (temp) {
+    cout << "Delete " << temp->data << "\n";
     this->top = temp->next;
     delete temp;
-    temp->next = this->top;
+    temp->next = nullptr;
+    temp = this->top;
   }
 
   this->size = 0;

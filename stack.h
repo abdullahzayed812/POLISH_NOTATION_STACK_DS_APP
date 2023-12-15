@@ -1,22 +1,5 @@
-// #define LINKED_STACK
-
-// typedef int StackEntry;
-
 #ifndef LINKED_STACK
 #define LINKED_STACK
-
-// struct StackNode<T> {
-//   StackEntry entry;
-//   StackNode* next;
-// };
-
-// struct Stack {
-//   StackNode* top;
-//   int size;
-
-//   void InitializeStack();
-//   void push(StackEntry* ptrStackEntry);
-// };
 
 struct Node {
   int data;
