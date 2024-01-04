@@ -1,22 +1,12 @@
 #include <iomanip>
 #include <iostream>
 
+#include "postfix.h"
 #include "stack.h"
 
-using std::boolalpha;
-using std::cout;
-
-void printItem(int* item) { cout << *item << "\n"; }
-
 int main() {
-  Stack* myStack = new Stack();
-
-  myStack->push(10);
-  myStack->push(20);
-  myStack->push(30);
-  myStack->push(40);
-
-  myStack->clearStack();
+  std::string postfix = infixToPostfix("1+2+3*5$1/2-3");
+  std::cout << postfix << "\n";
 
   return 0;
 }

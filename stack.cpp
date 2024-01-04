@@ -15,17 +15,22 @@ Stack::Stack() {
   this->size = 0;
 }
 
-void Stack::push(int data) {
-  Node* temp = new Node();
+Stack::~Stack() {
+  this->clearStack();
+  this->top = nullptr;
+}
 
-  if (!temp) {
+void Stack::push(int data) {
+  Node* newNode = new Node();
+
+  if (!newNode) {
     cout << "Stack overflow" << endl;
   }
 
-  temp->data = data;
-  temp->next = this->top;
+  newNode->data = data;
+  newNode->next = this->top;
 
-  this->top = temp;
+  this->top = newNode;
 
   this->size++;
 }
@@ -44,6 +49,8 @@ int Stack::pop() {
   return result;
 }
 
+int Stack::stackTop() { return this->top->data; }
+
 bool Stack::isEmpty() { return this->size == 0; }
 
 bool Stack::isFull() { return false; }
@@ -54,7 +61,6 @@ void Stack::clearStack() {
   Node* temp = this->top;
 
   while (temp) {
-    cout << "Delete " << temp->data << "\n";
     this->top = temp->next;
     delete temp;
     temp->next = nullptr;
@@ -62,6 +68,7 @@ void Stack::clearStack() {
   }
 
   this->size = 0;
+  std::cout << "\nStack is clear.\n";
 }
 
 void Stack::traverseStack(void (*visit)(int* item)) {

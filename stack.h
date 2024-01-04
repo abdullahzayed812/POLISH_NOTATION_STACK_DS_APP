@@ -13,8 +13,10 @@ struct Stack {
   int size;
 
   Stack();
+  ~Stack();
   void push(int data);
   int pop();
+  int stackTop();
   bool isEmpty();
   bool isFull();
   int stackSize();
