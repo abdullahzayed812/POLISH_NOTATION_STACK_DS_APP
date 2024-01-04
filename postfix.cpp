@@ -31,15 +31,15 @@ std::string infixToPostfix(std::string infix) {
         topOperator = operatorsStack->stackTop();
 
         while (!operatorsStack->isEmpty() && precedent(topOperator, currentChar)) {
-          postfix += topOperator;
+          postfix += operatorsStack->pop();
 
           if (!operatorsStack->isEmpty()) {
             topOperator = operatorsStack->stackTop();
           }
         }
-      } else {
-        operatorsStack->push(currentChar);
       }
+
+      operatorsStack->push(currentChar);
     }
   }
 

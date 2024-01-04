@@ -20,7 +20,7 @@ Stack::~Stack() {
   this->top = nullptr;
 }
 
-void Stack::push(int data) {
+void Stack::push(StackEntry data) {
   Node* newNode = new Node();
 
   if (!newNode) {
@@ -35,9 +35,9 @@ void Stack::push(int data) {
   this->size++;
 }
 
-int Stack::pop() {
+StackEntry Stack::pop() {
   Node* temp = this->top;
-  int result = temp->data;
+  StackEntry result = temp->data;
 
   this->top = temp->next;
 
@@ -49,7 +49,7 @@ int Stack::pop() {
   return result;
 }
 
-int Stack::stackTop() { return this->top->data; }
+StackEntry Stack::stackTop() { return this->top->data; }
 
 bool Stack::isEmpty() { return this->size == 0; }
 
@@ -71,7 +71,7 @@ void Stack::clearStack() {
   std::cout << "\nStack is clear.\n";
 }
 
-void Stack::traverseStack(void (*visit)(int* item)) {
+void Stack::traverseStack(void (*visit)(StackEntry* item)) {
   Node* temp = this->top;
 
   while (temp) {

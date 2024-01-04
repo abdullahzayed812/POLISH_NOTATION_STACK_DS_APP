@@ -1,8 +1,10 @@
 #ifndef LINKED_STACK
 #define LINKED_STACK
 
+typedef char StackEntry;
+
 struct Node {
-  int data;
+  StackEntry data;
   Node* next;
 
   Node();
@@ -14,14 +16,14 @@ struct Stack {
 
   Stack();
   ~Stack();
-  void push(int data);
-  int pop();
-  int stackTop();
+  void push(StackEntry data);
+  StackEntry pop();
+  StackEntry stackTop();
   bool isEmpty();
   bool isFull();
   int stackSize();
   void clearStack();
-  void traverseStack(void (*visit)(int* item));
+  void traverseStack(void (*visit)(StackEntry* item));
 };
 
 #endif

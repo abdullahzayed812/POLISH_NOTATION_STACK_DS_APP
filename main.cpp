@@ -5,7 +5,7 @@
 #include "stack.h"
 
 int main() {
-  std::string postfix = infixToPostfix("1+2+3*5$1/2-3");
+  std::string postfix = infixToPostfix("1+2*3$4/5-6");
   std::cout << postfix << "\n";
 
   return 0;
