@@ -1,5 +1,6 @@
 #include "postfix.h"
 
+#include <cmath>
 #include <string>
 
 #include "stack.h"
@@ -16,6 +17,23 @@ bool precedent(char op1, char op2) {
   }
 
   return false;
+}
+
+double evaluate(double op1, double op2, char aOperator) {
+  switch (aOperator) {
+    case '+':
+      return op1 + op2;
+    case '-':
+      return op1 - op2;
+    case '*':
+      return op1 * op2;
+    case '/':
+      return op1 / op2;
+    case '$':
+      return std::pow(op1, op2);
+    default:
+      return -1;
+  }
 }
 
 std::string infixToPostfix(std::string infix) {
@@ -48,4 +66,23 @@ std::string infixToPostfix(std::string infix) {
   }
 
   return postfix;
+}
+
+double evaluatePostfix(std::string postfix) {
+  Stack* _stack = new Stack();
+  double value;
+
+  for (char currentChar : postfix) {
+    if (isDigit(currentChar)) {
+      _stack->push((double)(currentChar - '0'));
+    } else {
+      double op1 = _stack->pop();
+      double op2 = _stack->pop();
+
+      value = evaluate(op1, op2, currentChar);
+      _stack->push(value);
+    }
+  }
+
+  return _stack->pop();
 }

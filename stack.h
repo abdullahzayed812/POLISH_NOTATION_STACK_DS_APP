@@ -1,7 +1,7 @@
 #ifndef LINKED_STACK
 #define LINKED_STACK
 
-typedef char StackEntry;
+typedef double StackEntry;
 
 struct Node {
   StackEntry data;
